@@ -11,7 +11,7 @@ export const Offer = () => {
             <button>Check now</button>
         </div>
         <div className="offer-right">
-          <img src = {exclusive_img} alt="" />
+          <img  src = {exclusive_img} alt="" />
         </div>
     </div>
   )
