@@ -1,45 +1,46 @@
-import React, { useContext } from 'react'
-// import { Cartitems } from '../Components/Cartitems/Cartitems'
-import { ShopContext } from '../Context/ShopContext'
+import React, { useContext } from 'react';
+import './CSS/Cart.css'
+import { ShopContext } from '../Context/ShopContext';
 
 export const Cart = () => {
- 
-  const {cart ,totalAmount, handleDecrement, handleIncrement} = useContext(ShopContext)
+  const { cart, totalAmount, handleDecrement, handleIncrement } = useContext(ShopContext);
 
-  if (cart.length === 0){
-    return <div><h1>Your Cart is Empty</h1></div>
-  }
-  else{
-  return (
-     <div>
-      <h2>Cart</h2>
-      <ul>
-         {
-          cart.map((item , index)=>(
-
-              <div key={index}>
-                     <img src={item.image} width={70} alt="" />
-                <span> {item.name}  </span>
-                <button onClick={()=> handleDecrement(index)} >-</button>
-                <span> {item.quantity} </span>
-                <button onClick={()=> handleIncrement(index)} >+</button>
-                 <span> {item.new_price} </span>
-                <span> {item.new_price * item.quantity} </span>
-
+  // Render message if cart is empty
+  if (cart.length === 0) {
+    return <div className="empty-cart"><h1>Your Cart is Empty</h1></div>;
+  } else {
+    return (
+      <div className="cart-container">
+      <h2 className="cart-heading">Your Cart</h2>
+      <div className="cart-items">
+        {cart.map((item, index) => {
+          if (item.quantity === 0) {
+            return null; // Skip rendering if quantity is zero
+          }
+          return (
+            <div className="cart-item" key={index}>
+              <div className="item-price-container">
+                <h3 className="item-price">Price: ${item.new_price}</h3>
               </div>
-            
-          )
+              <img className="item-image" src={item.image} width={70} alt={item.name} />
+              <div className="item-details">
+                <h3 className="item-name">{item.name}</h3>
+                <div className="quantity-controls">
+                  <button className="quantity-button" onClick={() => handleDecrement(index)}>-</button>
+                  <span className="item-quantity">{item.quantity}</span>
+                  <button className="quantity-button" onClick={() => handleIncrement(index)}>+</button>
+                </div>
+                <span className="item-total">${item.new_price * item.quantity}</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="cart-total">
+        <h3>Total: ${totalAmount}</h3>
+      </div>
+    </div>
+    );
+  }
+};
 
-          )
-         }
-            
-        
-        </ul>
-        {
-            <h1> {totalAmount} </h1>
-        }
-     </div>
-      
-  )
-        }
-}
