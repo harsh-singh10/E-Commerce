@@ -44,6 +44,8 @@ const ShopContextProvider = (props) => {
            setCart((prev) => [...prev , {...item , quantity :1} ] )
        }
 
+       alert("your item is added to the cart")
+
     }
 
     const count = cart.reduce((total , q) =>( total + q.quantity),0)
