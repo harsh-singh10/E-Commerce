@@ -5,19 +5,17 @@ import { ShopContext } from '../Context/ShopContext';
 export const Cart = () => {
   const { cart, totalAmount, handleDecrement, handleIncrement } = useContext(ShopContext);
 
-  // Render message if cart is empty
-  if (cart.length === 0) {
+  // Filter out items with quantity zero
+  const filteredCart = cart.filter(item => item.quantity >= 1);
+
+  if (filteredCart.length === 0) {
     return <div className="empty-cart"><h1>Your Cart is Empty</h1></div>;
   } else {
     return (
       <div className="cart-container">
-      <h2 className="cart-heading">Your Cart</h2>
-      <div className="cart-items">
-        {cart.map((item, index) => {
-          if (item.quantity === 0) {
-            return null; // Skip rendering if quantity is zero
-          }
-          return (
+        <h2 className="cart-heading">Your Cart</h2>
+        <div className="cart-items">
+          {filteredCart.map((item, index) => (
             <div className="cart-item" key={index}>
               <div className="item-price-container">
                 <h3 className="item-price">Price: ${item.new_price}</h3>
@@ -33,13 +31,12 @@ export const Cart = () => {
                 <span className="item-total">${item.new_price * item.quantity}</span>
               </div>
             </div>
-          );
-        })}
+          ))}
+        </div>
+        <div className="cart-total">
+          <h3>Total: ${totalAmount}</h3>
+        </div>
       </div>
-      <div className="cart-total">
-        <h3>Total: ${totalAmount}</h3>
-      </div>
-    </div>
     );
   }
 };
