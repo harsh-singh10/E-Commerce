@@ -18,6 +18,8 @@ import kids_banner from './Components/Assets/banner_kids.png'
 function App() {
   const [count, setCount] = useState(0)
 
+  
+
   return (
     <>
       <BrowserRouter>

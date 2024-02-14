@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import './Nav.css'
 import logo from '../Assets/logo.png'
 import cart_icon from '../Assets/cart_icon.png'
 import { Link, NavLink } from 'react-router-dom'
 import nav_dropdown from '../Assets/dropdown_icon.png'
+import { ShopContext } from '../../Context/ShopContext'
 export const Nav = () => {
     const [menu , setmenu] = useState("shop");
     const menuRef = useRef()
@@ -13,6 +14,8 @@ export const Nav = () => {
          e.target.classList.toggle('open')
         console.log("i am working");
     }
+
+    const {count} = useContext(ShopContext)
 
     return (
         <div className="navbar">
@@ -31,7 +34,7 @@ export const Nav = () => {
             <div className="nav-login-cart">
                 <Link to='/login'> <button>Login</button> </Link>
                <Link to='/cart'><img src={cart_icon} alt="" /></Link> 
-                <div className="nav-cart-count">0</div>
+                <div className="nav-cart-count">{count}</div>
             </div>
         </div>
     )

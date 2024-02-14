@@ -48,7 +48,8 @@ export const ProductDisplay = (props) => {
                         <div>XXL</div>
                     </div>
                 </div>
-                <button onClick={()=>{addToCart(product.id)}} >Add to Cart</button>
+                {/* <button onClick={()=>{addToCart(product.id)}} >Add to Cart</button> */}
+                <button onClick={()=>{addToCart(product)}} >Add to Cart</button>
             </div>
         </div >
     )
