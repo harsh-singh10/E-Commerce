@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
+
 
 import './App.css'
 import { Nav } from './Components/Navbar/Navbar'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route ,Navigate  } from 'react-router-dom'
 import { Shop } from './Pages/Shop'
 import { ShopCategory } from './Pages/ShopCategory'
 import { Product } from './Pages/Product'
@@ -18,12 +19,16 @@ import kids_banner from './Components/Assets/banner_kids.png'
 function App() {
   const [count, setCount] = useState(0)
 
-  
+
+
+
+
 
   return (
     <>
       <BrowserRouter>
         <Nav />
+        
         <Routes>
 
           <Route path='/' element={<Shop />} />

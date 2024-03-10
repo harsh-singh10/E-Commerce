@@ -21,15 +21,15 @@ export const Nav = () => {
         <div className="navbar">
             <div className="nav-logo">
                 <img src={logo} alt="" />
-                <p>SHOPPER</p>
+                <p onClick={()=>{setmenu("shop")}}> <Link to = '/' style={{textDecoration:"none" , color: "black"}}>SHOPPER </Link>  </p>
             </div>
             <img className='nav-dropdown' onClick={dropToggle} src={nav_dropdown} alt="" />
             <ul ref={menuRef} className='nav-menu'>
-                <li onClick={()=>{setmenu("shop")}}> <Link to = '/' style={{textDecoration:"none"}}>Shop</Link> {menu === "shop" ?<hr />   : <></>} </li>
-                <li onClick={()=>{setmenu("men")}}> <Link to='/men' style={{textDecoration:"none"}}>Men </Link> {menu === "men" ?<hr /> : <></>}</li>
-                <li onClick={()=>{setmenu("women")}}> <Link to='/women' style={{textDecoration:"none"}} >Women</Link>  {menu === "women" ?<hr /> : <></>}</li>
+                <li onClick={()=>{setmenu("shop")}}> <Link to = '/' style={{textDecoration:"none" ,  color: "black"}}>Shop</Link> {menu === "shop" ?<hr />   : <></>} </li>
+                <li onClick={()=>{setmenu("men")}}> <Link to='/men' style={{textDecoration:"none" , color: "black"}}>Men </Link> {menu === "men" ?<hr /> : <></>}</li>
+                <li onClick={()=>{setmenu("women")}}> <Link to='/women' style={{textDecoration:"none" , color: "black"}} >Women</Link>  {menu === "women" ?<hr /> : <></>}</li>
 
-                <li onClick={()=>{setmenu("kid")}}> <Link to = '/kid' style={{textDecoration:"none"}}>Kids</Link>  {menu === "kid" ?<hr /> : <></>}</li>
+                <li onClick={()=>{setmenu("kid")}}> <Link to = '/kid' style={{textDecoration:"none" , color: "black"}}>Kids</Link>  {menu === "kid" ?<hr /> : <></>}</li>
             </ul>
             <div className="nav-login-cart">
                 <Link to='/login'> <button>Login</button> </Link>
