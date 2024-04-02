@@ -26,12 +26,14 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter > */}
+      <BrowserRouter basename="/E-Commerce">
         <Nav />
         
         <Routes>
 
-          <Route path='/' element={<Shop />} />
+          {/* <Route path='/' element={<Shop />} /> */}
+         <Route path="/" element={<Shop />} />
           <Route path='/men' element={<ShopCategory banner={men_banner} category="men" />} />
           <Route path='/women' element={<ShopCategory banner={women_banner} category="women" />} />
           <Route path='/kid' element={<ShopCategory banner={kids_banner} category="kid" />} />
@@ -44,7 +46,7 @@ function App() {
         </Routes>
         <Footer />
 
-
+ 
       </BrowserRouter>
 
     </>
